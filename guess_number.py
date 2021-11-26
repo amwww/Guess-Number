@@ -5,6 +5,18 @@ import sys
 print("Guess Number!")
 def gameLoop():
     while True:
+        print("Enter Amount of Chances")
+        c = input("")
+        try:
+            c = int(c)
+        except:
+            print("tbh if you want to play pls cooperate and enter a number lol.")
+            continue
+        if int(c) < 1:
+            print("Awwwww, don't be too harsh on yourself, because there is 0% chance that you will win!")
+            continue
+        break
+    while True:        
         print("Select Range")
         r = input("1-")
         try:
@@ -39,11 +51,22 @@ def gameLoop():
         guess = input("")
         try:
             times += 1
+            if times > c:
+                print("Oh No! You ran out of chances! Just make it easier or try again!")
+                print("Wanna play again? Use /restart or /again! If you don't, type something random!")
+                print("Input a command!")
+                guess = input("")
+                if guess == "/restart":
+                    print("Restarting...")
+                    gameLoop()
+                elif guess == "/range":
+                    print("1-" + r)
+                else:
+                    print("Quitting the qame on behalf of you.")
+                break
             if int(guess) == number:
                 print("Yes! You got it in " + str(times) + " tries!")
-                print(
-                    "Wanna play again? Use /restart or /again! If you don't, type something random!"
-                )
+                print("Wanna play again? Use /restart or /again! If you don't, type something random!")
                 print("Input a command!")
                 guess = input("")
                 if guess == "/restart":
